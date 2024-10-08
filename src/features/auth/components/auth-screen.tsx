@@ -12,9 +12,9 @@ export const AuthScreen = () => {
             <div className="md:h-auto md:w-[420px]">
                 {
                     screen === "signIn" ? (
-                        <SignInCard />
+                        <SignInCard setScreen={setScreen} />
                     ) : (
-                        <SignUpCard />
+                        <SignUpCard setScreen={setScreen} />
                     )
                 }
             </div>

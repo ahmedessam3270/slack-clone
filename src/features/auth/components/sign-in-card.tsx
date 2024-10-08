@@ -10,8 +10,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { SignInFlow } from "../types";
 
-export const SignInCard = () => {
+interface SignInCardProps {
+    setScreen : (state: SignInFlow) => void
+}
+
+export const SignInCard = ({setScreen}: SignInCardProps) => {
     return (
         <Card className="w-full h-full p-8">
             <CardHeader className="px-0 pt-0">
@@ -45,14 +50,17 @@ export const SignInCard = () => {
                 <Separator />
                 <div className="flex flex-col gap-y-2.5">
                     <Button size='lg' variant="outline" className="w-full relative" onClick={() => { }} >
-                        <FcGoogle className="size-5 absolute top-2.5 left-2.5" />
+                        <FcGoogle className="size-5 absolute top-3 left-2.5" />
                         Continue With Google
                     </Button>
                     <Button size='lg' variant="outline" className="w-full relative" onClick={() => { }} >
-                        <FaGithub className="size-5 absolute top-2.5 left-2.5" />
+                        <FaGithub className="size-5 absolute top-3 left-2.5" />
                         Continue With Github
                     </Button>
                 </div>
+                <p className="text-xs text-muted-foreground">
+                    Don&apos;t have an account? <span onClick={()=> setScreen("signUp")} className="text-sky-700 hover:underline cursor-pointer">Sign Up</span>
+                </p>
             </CardContent>
         </Card>
     )
