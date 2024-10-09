@@ -1,3 +1,4 @@
+'use client';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
@@ -11,12 +12,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SignInFlow } from "../types";
+import { useState } from "react";
 
 interface SignUpCardProps {
     setScreen : (state: SignInFlow) => void
 }
 
 export const SignUpCard = ({setScreen}: SignUpCardProps) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     return (
         <Card className="w-full h-full p-8">
             <CardHeader className="px-0 pt-0">
@@ -31,8 +36,8 @@ export const SignUpCard = ({setScreen}: SignUpCardProps) => {
                         disabled={false}
                         type="email"
                         name="email"
-                        value=""
-                        onChange={() => { }}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email"
                         required
                     />
@@ -40,8 +45,8 @@ export const SignUpCard = ({setScreen}: SignUpCardProps) => {
                         disabled={false}
                         type="password"
                         name="password"
-                        value=""
-                        onChange={() => { }}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         placeholder="Password"
                         required
                     />
@@ -49,8 +54,8 @@ export const SignUpCard = ({setScreen}: SignUpCardProps) => {
                         disabled={false}
                         type="password"
                         name="password"
-                        value=""
-                        onChange={() => { }}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirm Password"
                         required
                     />
